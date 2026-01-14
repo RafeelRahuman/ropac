@@ -51,6 +51,16 @@ const computerSelection=getComputerChoice();
 
 playRound(humanSelection,computerSelection)}
 console.log("Human Score : " + humanScore + " Computer Score : " + computerScore)
+
+if(humanScore > computerScore){
+    console.log("WINNER is Human")
+}
+else if(computerScore > humanScore){
+    console.log("WINNER is Computer")
+}
+else{
+    console.log("Match Tied")
+}
 }   
 
 playGame();
