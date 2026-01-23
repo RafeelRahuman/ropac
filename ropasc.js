@@ -1,27 +1,23 @@
-function getComputerChoice(){
-   
-    let ran=Math.random();
-
-    if(ran<=0.33){
-        return "rock"
-    }
-    else if(ran<=0.66){
-        return "paper";
-    }
-    else{
-        return "scissor"
-    }
-}
-
 const gameButtons = document.querySelectorAll("#container button")
 const resultDisplay = document.querySelector("#results")
-
-let score = document.querySelector("#scores")
-
 const statusDisplay =document.querySelector("#status")
-
 const reset = document.querySelector("#reset")
+let score = document.querySelector("#scores")
+let humanScore=0;
+let computerScore=0;
 
+function getComputerChoice(){
+    let ran=Math.random();
+    if(ran<=0.33){
+        return "Rock"
+    }
+    else if(ran<=0.66){
+        return "Paper";
+    }
+    else{
+        return "Scissor"
+    }
+}
 gameButtons.forEach((button) =>  {
     button.addEventListener("click" , () => {
         const humanSelection=button.id;
@@ -31,28 +27,27 @@ gameButtons.forEach((button) =>  {
     });
 });
 
-
-
-
+reset.addEventListener( "click" ,() => {
+    humanScore=0;
+    computerScore=0;
+    statusDisplay.textContent = ""
+    resultDisplay.textContent = ""
+    score.textContent = "Player: 0 - Computer: 0";
+    gameButtons.forEach((btn) => btn.disabled = false )
+})
 // function getHumanChoice(){
 //     let hum=prompt("please enter rock or paper or scissor");
 //     return hum ? hum.toLowerCase() : "";
 // }
 
-let humanScore=0;
-let computerScore=0;
-
-
-
 function playRound(humanChoice,computerChoice){
-
     if(humanChoice === computerChoice){
           resultDisplay.textContent = "Game Tie"
     }
     else if (
-        (humanChoice === "rock" && computerChoice === "scissor")||
-        (humanChoice === "paper" && computerChoice === "rock")||
-        (humanChoice === "scissor" && computerChoice === "paper"))
+        (humanChoice === "Rock" && computerChoice === "Scissor")||
+        (humanChoice === "Paper" && computerChoice === "Rock")||
+        (humanChoice === "Scissor" && computerChoice === "Paper"))
         {
         humanScore+=1;
         resultDisplay.textContent ="Player WIN " + humanChoice + " Beats " + computerChoice;
@@ -61,6 +56,7 @@ function playRound(humanChoice,computerChoice){
         computerScore+=1;
         resultDisplay.textContent = "Computer Win " + computerChoice + " Beats " + humanChoice;
     }
+score.textContent = "Player: " + humanScore + " - Computer: " + computerScore;
 
     if (humanScore === 5 || computerScore === 5) {
     if (humanScore === 5) {
@@ -70,23 +66,7 @@ function playRound(humanChoice,computerChoice){
     }
     gameButtons.forEach((btn) => btn.disabled = true);   
 }
-
-
-score.textContent = "Player: " + humanScore + " - Computer: " + computerScore;
-
-
 }
-
-reset.addEventListener( "click" ,() => {
-    humanScore=0;
-    computerScore=0;
-    statusDisplay.textContent = ""
-    resultDisplay.textContent = ""
-    score.textContent = "Player: 0 - Computer: 0";
-    gameButtons.forEa ch((btn) => btn.disabled = false )
-})
-
-
 // function playGame(){
 //     for(let i=0;i<5;i++){
 // const humanSelection=getHumanChoice();

@@ -4,23 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <header class="header">
+        <h1 class ="title">ROCK PAPER SCISSOR</h1>
+    </header>
+
+    <div class = "score board">
+        <h2 class="score-info" id="scores"> Chose your weapon
+        </h2>
+        <h3 class="score-message" id="scoreMessage">First to score 5 points wins the Game </h3>
+        </div>
 
 <div id="container">
-  <button id="rock">Rock Me</button>
-  <button id="paper">Paper Me</button>
-  <button id="scissor">Scissor Me</button>
+  <button id="Rock">Rock Me</button>
+  <button id="Paper">Paper Me</button>
+  <button id="Scissor">Scissor Me</button>
 </div>    
 
 <div id = "results"></div>
 
-<div id = "scores"></div>
+<div id = "status"></div>
 
 <div id ="resetButton">
-  <button id = "reset">Reset</button>
+  <button id = "reset">Play Again</button>
 </div>
-<div id = "status"></div>
     <script src="ropasc.js">    </script>
 
 </body>
